@@ -1,4 +1,4 @@
-<h2>Desafio  Backend Nubank  com Java, SPringBoot, APIRestful e Postgres como banco de dados.</h2>
+<h2>Desafio  Backend Nubank  com Java, SpringBoot, APIRestful e PostgreSQL como banco de dados.</h2>
 
 Estou realizando essse projeto para estudar e treinar.
 
