@@ -20,7 +20,7 @@ Coisas que aprendi ou que já sabia e agora tenho maior entendimento:
         .collect(Collectors.toList()); // Coleta todos os DTOs em uma lista
 
 
-  Sem lambda, você teria que escrever algo bem mais longo:
+  Sem lambda, teria que escrever algo bem mais longo:
 
         .map(new Function<Contato, ContatoResponseDTO>() {
             @Override
