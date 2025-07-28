@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Entity
 
-//funções do lombok, requisitadas no desafuo:
+//funções do lombok, requisitadas no desafio:
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,7 +24,7 @@ public class Contato {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_idcliente")
+    @JoinColumn(name = "clientes_idcliente")
     @JsonBackReference
     private Clientes clientes;
 }
