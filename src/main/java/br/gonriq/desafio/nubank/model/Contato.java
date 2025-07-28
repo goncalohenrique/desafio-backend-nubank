@@ -7,13 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-
 //funções do lombok, requisitadas no desafio:
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
+@Entity
+@Table
 public class Contato {
 
     @Id

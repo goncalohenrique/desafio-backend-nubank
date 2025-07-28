@@ -11,8 +11,8 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientesDTO {
+public class ClientesRequestDTO {
 
     private String nome;
-    private List<ContatoDTO> contatos;
+    private List<ContatoRequestDTO> contatos;
 }

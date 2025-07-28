@@ -1,6 +1,6 @@
 package br.gonriq.desafio.nubank.service;
 
-import br.gonriq.desafio.nubank.dto.ClientesDTO;
+import br.gonriq.desafio.nubank.dto.ClientesRequestDTO;
 import br.gonriq.desafio.nubank.dto.ClientesReponseDTO;
 import br.gonriq.desafio.nubank.dto.ContatoResponseDTO;
 import br.gonriq.desafio.nubank.model.Clientes;
@@ -18,7 +18,7 @@ public class ClientesService {
     @Autowired
     private ClientesRepository clientesRepository;
 
-    public Clientes CadastrarCliente(ClientesDTO dto){
+    public Clientes CadastrarCliente(ClientesRequestDTO dto){
         Clientes clientes  = new Clientes();
         clientes.setNome(dto.getNome());
 

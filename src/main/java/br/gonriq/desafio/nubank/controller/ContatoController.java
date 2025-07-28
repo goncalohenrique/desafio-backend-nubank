@@ -1,6 +1,6 @@
 package br.gonriq.desafio.nubank.controller;
 
-import br.gonriq.desafio.nubank.dto.ContatoDTO;
+import br.gonriq.desafio.nubank.dto.ContatoRequestDTO;
 import br.gonriq.desafio.nubank.model.Clientes;
 import br.gonriq.desafio.nubank.model.Contato;
 import br.gonriq.desafio.nubank.repository.ClientesRepository;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.http.HttpResponse;
 import java.util.Optional;
 
 @RestController
@@ -27,7 +26,7 @@ public class ContatoController {
     private ClientesRepository clientesRepository;
 
     @PostMapping
-    public ResponseEntity<?> cadContatos(@RequestBody ContatoDTO contDto) {
+    public ResponseEntity<?> cadContatos(@RequestBody ContatoRequestDTO contDto) {
         Optional<Clientes> clientesOpt = clientesRepository.findById(contDto.getIdcliente());
         if (clientesOpt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente não encontrado!");

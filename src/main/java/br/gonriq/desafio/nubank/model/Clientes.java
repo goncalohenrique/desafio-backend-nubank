@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-
+@Table
 //funções do lombok, requisitadas no desafuo:
 @Getter
 @Setter

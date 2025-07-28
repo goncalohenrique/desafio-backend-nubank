@@ -1,6 +1,6 @@
 package br.gonriq.desafio.nubank.controller;
 
-import br.gonriq.desafio.nubank.dto.ClientesDTO;
+import br.gonriq.desafio.nubank.dto.ClientesRequestDTO;
 import br.gonriq.desafio.nubank.dto.ClientesReponseDTO;
 import br.gonriq.desafio.nubank.dto.ContatoResponseDTO;
 import br.gonriq.desafio.nubank.model.Clientes;
@@ -20,7 +20,7 @@ public class CliienteController {
     private ClientesService clientesService;
 
     @PostMapping
-    public ResponseEntity<Clientes> CadCliente(@RequestBody ClientesDTO clidto)
+    public ResponseEntity<Clientes> CadCliente(@RequestBody ClientesRequestDTO clidto)
     {
         Clientes clienteSalvo = clientesService.CadastrarCliente(clidto);
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
