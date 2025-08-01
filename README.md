@@ -6,7 +6,57 @@ Esse README possui explicações escritas por mim mesmo.
 **Explicação da Estrutura e Arquitetura Escolhida**:
 
  Utilizei a Arquitetura em Camadas, com MVC(Model-View-Controller) + dto(requisitado no desafio);<br>
- Separei o projeto em 5 packages: config, controller, dto, mapper, model, repository e service, explicação de cada um: <br>
+ Separei o projeto em 7 packages: config, controller, dto, mapper, model, repository e service, explicação de cada um: <br>
+
+
+
+✅ Por que usar essa classe ValidationHandle?
+1. Centralização do tratamento de erros
+Sem essa classe, toda vez que você usar @Valid em um @RequestBody, você teria que lidar com erros manualmente em cada controller. Isso gera:
+
+Repetição de código
+
+Poluição do controller
+
+Mais chances de esquecer ou errar
+
+Com @RestControllerAdvice, você trata todos os erros de validação em um lugar só.
+
+2. Padronização da resposta da API
+Quando o Spring lança uma exceção de validação (MethodArgumentNotValidException), ele, por padrão, devolve uma resposta extensa e difícil de entender.
+Com seu ValidationHandle, você personaliza e padroniza o retorno de erros:
+
+        json
+        {
+          "nome": "Nome é obrigatório",
+          "email": "Email inválido"
+        }
+Isso melhora muito a experiência para o front-end e para quem consome sua API.
+
+3. Boa separação de responsabilidades
+Colocar essa classe no pacote config é bom porque:
+
+Ela não é um controller
+
+Ela não contém regra de negócio
+
+Ela configura o comportamento geral da API
+
+Ou seja, o lugar certo é config ou exception, se você quiser ser mais específico.
+
+4. Boas práticas em APIs REST
+Em APIs REST modernas, é importante:
+
+Dar mensagens claras de erro
+
+Dizer qual campo está errado
+
+Usar status HTTP corretos (400, 404, etc.)
+
+Sua classe faz tudo isso com elegância e reaproveitamento.
+
+
+
  
    **Controller**: <br>
      Responsabilidade: Receber requisições HTTP e retornar respostas. <br><br>
