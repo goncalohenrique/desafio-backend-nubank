@@ -133,9 +133,9 @@ Coisas que aprendi ou que já sabia e obtive maior entendimento:
     Uma lambda é uma forma simplificada de representar uma função anônima — ou seja, um pedaço de código que você pode passar como argumento, guardar em variável, etc.
     Foi introduzida no Java 8 para deixar o código mais conciso e expressivo, principalmente quando se trabalha com coleções e operações funcionais.
 
-  **Por que usar lambda?**
-   1. Código mais enxuto e legível
-   Antes do Java 8, para passar um pedaço de código, você precisava criar uma classe anônima, por exemplo:
+**Por que usar lambda?**
+ 1. Código mais enxuto e legível
+ Antes do Java 8, para passar um pedaço de código, você precisava criar uma classe anônima, por exemplo:
 
             List<String> nomes = Arrays.asList("Ana", "Carlos", "Beatriz");
 
