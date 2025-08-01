@@ -3,8 +3,9 @@ package br.gonriq.desafio.nubank.controller;
 import br.gonriq.desafio.nubank.dto.ClientesRequestDTO;
 import br.gonriq.desafio.nubank.dto.ClientesReponseDTO;
 import br.gonriq.desafio.nubank.dto.ContatoResponseDTO;
-import br.gonriq.desafio.nubank.model.Clientes;
+import br.gonriq.desafio.nubank.model.Cliente;
 import br.gonriq.desafio.nubank.service.ClientesService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,9 @@ public class CliienteController {
     private ClientesService clientesService;
 
     @PostMapping
-    public ResponseEntity<Clientes> CadCliente(@RequestBody ClientesRequestDTO clidto)
+    public ResponseEntity<Cliente> CadCliente(@RequestBody @Valid ClientesRequestDTO clidto)
     {
-        Clientes clienteSalvo = clientesService.CadastrarCliente(clidto);
+        Cliente clienteSalvo = clientesService.CadastrarCliente(clidto);
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
     }
 

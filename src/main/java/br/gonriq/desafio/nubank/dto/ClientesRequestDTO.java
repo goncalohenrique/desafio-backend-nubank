@@ -1,5 +1,6 @@
 package br.gonriq.desafio.nubank.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ClientesRequestDTO {
 
+    @NotBlank(message = "Nome é obrigatório")
     private String nome;
     private List<ContatoRequestDTO> contatos;
 }

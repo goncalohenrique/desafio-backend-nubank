@@ -17,16 +17,17 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Clientes {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idcliente;
 
+    @Column(nullable = false)
     private String nome;
 
     @OneToMany(mappedBy = "clientes", cascade =  CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<Contato> contatos = new ArrayList<Contato>();
+    private List<Contatos> contatos = new ArrayList<Contatos>();
 
 }

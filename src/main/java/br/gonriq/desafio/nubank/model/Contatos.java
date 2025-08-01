@@ -15,17 +15,19 @@ import lombok.Setter;
 
 @Entity
 @Table
-public class Contato {
+public class Contatos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idcontato;
 
+    @Column(nullable = false)
     private String telefone;
+    @Column(nullable = false)
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "clientes_idcliente")
     @JsonBackReference
-    private Clientes clientes;
+    private Cliente clientes;
 }

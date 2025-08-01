@@ -3,8 +3,8 @@ package br.gonriq.desafio.nubank.service;
 import br.gonriq.desafio.nubank.dto.ClientesRequestDTO;
 import br.gonriq.desafio.nubank.dto.ClientesReponseDTO;
 import br.gonriq.desafio.nubank.dto.ContatoResponseDTO;
-import br.gonriq.desafio.nubank.model.Clientes;
-import br.gonriq.desafio.nubank.model.Contato;
+import br.gonriq.desafio.nubank.model.Cliente;
+import br.gonriq.desafio.nubank.model.Contatos;
 import br.gonriq.desafio.nubank.repository.ClientesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +18,8 @@ public class ClientesService {
     @Autowired
     private ClientesRepository clientesRepository;
 
-    public Clientes CadastrarCliente(ClientesRequestDTO dto){
-        Clientes clientes  = new Clientes();
+    public Cliente CadastrarCliente(ClientesRequestDTO dto){
+        Cliente clientes  = new Cliente();
         clientes.setNome(dto.getNome());
 
         //Verifica se já foi passada a lista de contatos ao fazer o cadastro do cliente.
@@ -27,8 +27,8 @@ public class ClientesService {
         if (dto.getContatos() != null && !dto.getContatos().isEmpty()) {
 
             //Converte cada objeto de contato recebido no DTO para uma entidade Contato.
-            List<Contato> contatos = dto.getContatos().stream().map(c -> {
-                Contato contato = new Contato();
+            List<Contatos> contatos = dto.getContatos().stream().map(c -> {
+                Contatos contato = new Contatos();
 
                 contato.setTelefone(c.getTelefone());
                 contato.setEmail(c.getEmail());
@@ -47,7 +47,7 @@ public class ClientesService {
 
     public List<ContatoResponseDTO> listarContatoPorCliente(Long idcliente)
     {
-        Clientes clientes = clientesRepository.findById(idcliente)
+        Cliente clientes = clientesRepository.findById(idcliente)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado!"));//Se não, lançar: excessao de cliente nao encontrado
 
         //Pega a lista de contatos associada ao cliente (clientes.getContatos())
@@ -72,7 +72,7 @@ public class ClientesService {
                 .collect(Collectors.toList());     // 4. Coleta os DTOs em uma lista
     }
 
-    private ClientesReponseDTO toDto(Clientes clientes) {
+    private ClientesReponseDTO toDto(Cliente clientes) {
         ClientesReponseDTO dto = new ClientesReponseDTO();
         dto.setIdcliente(clientes.getIdcliente());
         dto.setNome(clientes.getNome());

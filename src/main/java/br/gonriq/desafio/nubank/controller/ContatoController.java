@@ -1,11 +1,12 @@
 package br.gonriq.desafio.nubank.controller;
 
+import br.gonriq.desafio.nubank.dto.ClientesRequestDTO;
 import br.gonriq.desafio.nubank.dto.ContatoRequestDTO;
-import br.gonriq.desafio.nubank.model.Clientes;
-import br.gonriq.desafio.nubank.model.Contato;
+import br.gonriq.desafio.nubank.model.Cliente;
+import br.gonriq.desafio.nubank.model.Contatos;
 import br.gonriq.desafio.nubank.repository.ClientesRepository;
-import br.gonriq.desafio.nubank.repository.ContatoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.gonriq.desafio.nubank.service.ContatosService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,26 +20,17 @@ import java.util.Optional;
 @RequestMapping("/contatos")
 public class ContatoController {
 
-    @Autowired
-    private ContatoRepository contatoRepository;
 
-    @Autowired
-    private ClientesRepository clientesRepository;
+    ContatosService contatosService;
 
     @PostMapping
-    public ResponseEntity<?> cadContatos(@RequestBody ContatoRequestDTO contDto) {
-        Optional<Clientes> clientesOpt = clientesRepository.findById(contDto.getIdcliente());
-        if (clientesOpt.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente não encontrado!");
+    public ResponseEntity<?> cadContatos(@RequestBody @Valid ContatoRequestDTO contDto) {
+        try {
+            Contatos contatoSalvo = contatosService.cadastrarContato(contDto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(contatoSalvo);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-
-        Contato contato = new Contato();
-        contato.setClientes(clientesOpt.get());
-        contato.setTelefone(contDto.getTelefone());
-        contato.setEmail(contDto.getEmail());
-        contatoRepository.save(contato);
-        return ResponseEntity.status(HttpStatus.CREATED).body(contato);
-
     }
 
 }
