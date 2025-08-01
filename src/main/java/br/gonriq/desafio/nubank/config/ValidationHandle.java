@@ -15,7 +15,7 @@ public class ValidationHandle {
 
     private final View error;
 
-    //Esse método é chamado automaticamente quando uma MethodArgumentNotValidException ocorre.
+    //Esse método é chamado automaticamente quando uma MethodArgumentNotValidException ocorre
     public ValidationHandle(View error) {
         this.error = error;
     }
