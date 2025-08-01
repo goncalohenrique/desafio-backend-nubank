@@ -6,7 +6,7 @@ Esse README possui explicações escritas por mim mesmo.
 **Explicação da Estrutura e Arquitetura Escolhida**:
 
  Utilizei a Arquitetura em Camadas, com MVC(Model-View-Controller) + dto(requisitado no desafio);<br>
- Separei o projeto em 5 packages: controller, dto, model, repository e service, explicação de cada um: <br>
+ Separei o projeto em 5 packages: config, controller, dto, mapper, model, repository e service, explicação de cada um: <br>
  
    **Controller**: <br>
      Responsabilidade: Receber requisições HTTP e retornar respostas. <br><br>
